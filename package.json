@@ -1,6 +1,6 @@
 {
   "name": "mx-create-mod",
-  "version": "0.0.2",
+  "version": "0.0.21",
   "author": "mxswat",
   "main": "./dist/index.js",
   "license": "GPL3",
