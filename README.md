@@ -1,12 +1,12 @@
-# `create-mod`
+# `mx-create-mod`
 
 > A lightweight(ish) CLI for scaffolding new Vortex extensions
 
 ## Installation
 
-You don't actually need to, realistically. Just run `npm init create-mod` and `npm` will do the hard work of downloading and running the CLI.
+You don't actually need to, realistically. Just run `npm init mx-create-mod` and `npm` will do the hard work of downloading and running the CLI.
 
-If you really want to install it, just run `npm i -g create-mod` then run `create-mod` to get started.
+If you really want to install it, just run `npm i -g mx-create-mod` then run `mx-create-mod` to get started.
 
 ## Options
 

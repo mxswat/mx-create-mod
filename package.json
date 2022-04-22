@@ -1,5 +1,5 @@
 {
-  "name": "create-mod",
+  "name": "mx-create-mod",
   "version": "0.0.2",
   "author": "mxswat",
   "main": "./dist/index.js",
@@ -13,20 +13,20 @@
   },
   "keywords": [
     "cli",
-    "create-mod"
+    "mx-create-mod"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mxswat/create-mod.git"
+    "url": "git+https://github.com/mxswat/mx-create-mod.git"
   },
   "bin": {
-    "create-mod": "./dist/index.js",
-    "@mxswat/create-mod": "./dist/index.js"
+    "mx-create-mod": "./dist/index.js",
+    "@mxswat/mx-create-mod": "./dist/index.js"
   },
   "bugs": {
-    "url": "https://github.com/mxswat/create-mod/issues"
+    "url": "https://github.com/mxswat/mx-create-mod/issues"
   },
-  "homepage": "https://github.com/mxswat/create-mod#readme",
+  "homepage": "https://github.com/mxswat/mx-create-mod#readme",
   "devDependencies": {
     "@types/ejs": "^3.1.0",
     "@types/inquirer": "^8.2.1",

@@ -4,6 +4,7 @@
 name: Publish to npm
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - 'v*.*.*'
@@ -36,6 +37,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with: 
           files: |
-            ./create-mod*.tgz
+            ./mx-create-mod*.tgz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
