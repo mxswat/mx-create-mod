@@ -1,0 +1,4 @@
+name=<%= modName %>
+id=<%= modNameSafe %>
+description=This is the description of <%= modName %>.
+poster=poster.png

@@ -1,0 +1,5 @@
+version=1
+title=<%= modName %>
+description=This is the description of <%= modName %>.
+tags=
+visibility=public
