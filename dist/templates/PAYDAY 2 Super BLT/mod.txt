@@ -1,0 +1,12 @@
+{
+	"name" : "<%- modName %>",
+	"description" : "This is a Super BLT mod.",
+	"author" : "RENAME_ME",
+	"version" : "0.0.1",
+	"blt_version" : 2,
+	"image" : "image.png",
+	"color" : "255 255 0",
+	"hooks" : [
+		
+	]
+}

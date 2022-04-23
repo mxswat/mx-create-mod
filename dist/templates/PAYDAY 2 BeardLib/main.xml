@@ -1,8 +1,8 @@
-<mod name="<%- modName %>" image="guis/mglspeed" color="Color(0, 0.1, 0.5)">
+<mod name="<%- modName %>" color="Color(0, 0.1, 0.5)">
 
 	<Localization directory="Localization" default="english.txt"/>
 	
-	<AssetUpdates id="20033" provider="modworkshop"/>
+	<AssetUpdates id="REPLACE_ME" provider="modworkshop"/>
 
 	<GlobalValue id="<%- modNameSafe %>" color="Color(0, 0.1, 0.5)"/>
 

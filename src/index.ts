@@ -12,6 +12,7 @@ import {
     isFileOrDirectoryToRename,
     generateFileOrDirectoryNameForEJS
 } from "./utils/utils";
+import { execFile } from 'child_process';
 
 const CURR_DIR = process.cwd();
 const CHOICES = fs.readdirSync(path.join(__dirname, 'templates'));
@@ -35,8 +36,8 @@ inquirer.prompt(QUESTIONS)
         const modName = answers['name'];
         const modNameSafe = toPascalCase(sanitize(modName))
         const templatePath = path.join(__dirname, 'templates', projectChoice);
-        const tartgetPath = path.join(CURR_DIR, modNameSafe);
-        if (!createProject(tartgetPath)) {
+        const targetPath = path.join(CURR_DIR, modNameSafe);
+        if (!createProject(targetPath)) {
             return;
         }
 
@@ -46,6 +47,8 @@ inquirer.prompt(QUESTIONS)
         }
 
         createDirectoryContents(templatePath, modNameSafe, options);
+
+        postProcess(targetPath);
     });
 
 function createProject(projectPath: string) {
@@ -109,5 +112,17 @@ function createDirectoryContents(templatePath: string, rootFolder: string, optio
         // write file to destination folder
         const writePath = path.join(CURR_DIR, rootFolder, fileName);
         fs.writeFileSync(writePath, contents, 'utf8');
+    });
+}
+
+function postProcess(targetPath: string) {
+    execFile('git', ['init'], {
+        cwd: targetPath
+    }, (error, stdout, stderr) => {
+        if (error) {
+            console.log(chalk.red(`Attempted to run git init, but git is not installed`));
+            return;
+        }
+        console.log('Git inititalized in the mod folder');
     });
 }

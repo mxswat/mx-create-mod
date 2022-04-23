@@ -32,6 +32,7 @@ var path = __importStar(require("path"));
 var inquirer = __importStar(require("inquirer"));
 var chalk_1 = __importDefault(require("chalk"));
 var utils_1 = require("./utils/utils");
+var child_process_1 = require("child_process");
 var CURR_DIR = process.cwd();
 var CHOICES = fs.readdirSync(path.join(__dirname, 'templates'));
 var QUESTIONS = [
@@ -53,8 +54,8 @@ inquirer.prompt(QUESTIONS)
     var modName = answers['name'];
     var modNameSafe = (0, utils_1.toPascalCase)((0, utils_1.sanitize)(modName));
     var templatePath = path.join(__dirname, 'templates', projectChoice);
-    var tartgetPath = path.join(CURR_DIR, modNameSafe);
-    if (!createProject(tartgetPath)) {
+    var targetPath = path.join(CURR_DIR, modNameSafe);
+    if (!createProject(targetPath)) {
         return;
     }
     var options = {
@@ -62,6 +63,7 @@ inquirer.prompt(QUESTIONS)
         modNameSafe: modNameSafe
     };
     createDirectoryContents(templatePath, modNameSafe, options);
+    postProcess(targetPath);
 });
 function createProject(projectPath) {
     if (fs.existsSync(projectPath)) {
@@ -112,6 +114,18 @@ function createDirectoryContents(templatePath, rootFolder, options) {
         // write file to destination folder
         var writePath = path.join(CURR_DIR, rootFolder, fileName);
         fs.writeFileSync(writePath, contents, 'utf8');
+    });
+}
+function postProcess(targetPath) {
+    // const git = 
+    (0, child_process_1.execFile)('git', ['init'], {
+        cwd: targetPath
+    }, function (error, stdout, stderr) {
+        if (error) {
+            console.log(chalk_1.default.red("Attempted to run git init, but git is not installed"));
+            return;
+        }
+        console.log('Git inititalized in the mod folder');
     });
 }
 //# sourceMappingURL=index.js.map
