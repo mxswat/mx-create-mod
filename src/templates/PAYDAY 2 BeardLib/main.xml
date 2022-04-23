@@ -1,0 +1,16 @@
+<mod name="<%- modName %>" color="Color(0, 0.1, 0.5)">
+
+	<Localization directory="Localization" default="english.txt"/>
+	
+	<AssetUpdates id="REPLACE_ME" provider="modworkshop"/>
+
+	<GlobalValue id="<%- modNameSafe %>" color="Color(0, 0.1, 0.5)"/>
+
+	<AddFiles directory="assets">		
+
+	</AddFiles>
+	
+	<Hooks directory="Hooks">
+
+	</Hooks>
+</mod>
