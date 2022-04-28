@@ -12,8 +12,8 @@ If you really want to install it, just run `npm i -g mx-create-mod` then run `mx
 ## Options
 
 * Zomboid - Run inside `C:\Users\<Your User Name>\Zomboid\Workshop`. It's similiar to the `ModTemplate` you find in `Zomboid\Workshop`.
-* Payday 2 BLT - [Coming Soon]
-* Payday 2 Beardlib - [Coming Soon]
+* Payday 2 BLT - Run inside your `mods` folder
+* Payday 2 Beardlib - Run inside your `asset_overrides` folder
 ## Credits
 
 Based on https://medium.com/@pongsatt/how-to-build-your-own-project-templates-using-node-cli-c976d3109129
