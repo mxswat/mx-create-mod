@@ -10,7 +10,8 @@ import {
     sanitize,
     toPascalCase,
     isFileOrDirectoryToRename,
-    generateFileOrDirectoryNameForEJS
+    generateFileOrDirectoryNameForEJS,
+    getTemplateDefaultSettings
 } from "./utils/utils";
 import { execFile } from 'child_process';
 
@@ -48,6 +49,16 @@ inquirer.prompt(QUESTIONS)
 
         createDirectoryContents(templatePath, modNameSafe, options);
 
+        let templateSettings = getTemplateDefaultSettings();
+
+        if (fs.existsSync(path.join(templatePath, '_template.json'))) {
+            templateSettings = JSON.parse(fs.readFileSync(path.join(templatePath, '_template.json'), 'utf8'));
+        }
+
+        if (!templateSettings.postProcess) {
+            return;
+        }
+
         postProcess(targetPath);
     });
 
@@ -62,7 +73,7 @@ function createProject(projectPath: string) {
 }
 
 // list of file/folder that should not be copied
-const SKIP_FILES = ['node_modules', '.template.json', '.gitkeep'];
+const SKIP_FILES = ['node_modules', '_template.json', '.template.json', '.gitkeep'];
 function createDirectoryContents(templatePath: string, rootFolder: string, options: TemplateOptions) {
     // read all files/folders (1 level) from template folder
     const filesToCreate = fs.readdirSync(templatePath);

@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.renderTemplate = exports.generateFileOrDirectoryNameForEJS = exports.isFileOrDirectoryToRename = exports.toPascalCase = exports.sanitize = void 0;
+exports.getTemplateDefaultSettings = exports.renderTemplate = exports.generateFileOrDirectoryNameForEJS = exports.isFileOrDirectoryToRename = exports.toPascalCase = exports.sanitize = void 0;
 var ejs = __importStar(require("ejs"));
 // const FileOrDirectorySeparator = '__'
 var illegalChars = /[\/\?<>\\:\*\|"]/g; // illegal Characters https://kb.acronis.com/content/39790
@@ -58,4 +58,10 @@ function renderTemplate(content, data) {
     return ejs.render(content, data);
 }
 exports.renderTemplate = renderTemplate;
+function getTemplateDefaultSettings() {
+    return {
+        postProcess: false
+    };
+}
+exports.getTemplateDefaultSettings = getTemplateDefaultSettings;
 //# sourceMappingURL=utils.js.map

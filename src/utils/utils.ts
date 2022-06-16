@@ -37,3 +37,9 @@ export function generateFileOrDirectoryNameForEJS(name: string, options: Templat
 export function renderTemplate(content: string, data: TemplateOptions) {
     return ejs.render(content, data);
 }
+
+export function getTemplateDefaultSettings () {
+    return {
+        postProcess: false
+    }
+}

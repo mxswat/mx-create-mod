@@ -63,6 +63,13 @@ inquirer.prompt(QUESTIONS)
         modNameSafe: modNameSafe
     };
     createDirectoryContents(templatePath, modNameSafe, options);
+    var templateSettings = (0, utils_1.getTemplateDefaultSettings)();
+    if (fs.existsSync(path.join(templatePath, '_template.json'))) {
+        templateSettings = JSON.parse(fs.readFileSync(path.join(templatePath, '_template.json'), 'utf8'));
+    }
+    if (!templateSettings.postProcess) {
+        return;
+    }
     postProcess(targetPath);
 });
 function createProject(projectPath) {
@@ -74,7 +81,7 @@ function createProject(projectPath) {
     return true;
 }
 // list of file/folder that should not be copied
-var SKIP_FILES = ['node_modules', '.template.json', '.gitkeep'];
+var SKIP_FILES = ['node_modules', '_template.json', '.template.json', '.gitkeep'];
 function createDirectoryContents(templatePath, rootFolder, options) {
     // read all files/folders (1 level) from template folder
     var filesToCreate = fs.readdirSync(templatePath);
@@ -117,7 +124,6 @@ function createDirectoryContents(templatePath, rootFolder, options) {
     });
 }
 function postProcess(targetPath) {
-    // const git = 
     (0, child_process_1.execFile)('git', ['init'], {
         cwd: targetPath
     }, function (error, stdout, stderr) {
